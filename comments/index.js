@@ -19,6 +19,7 @@ app.post("/posts/:id/comments", (req, res) => {
   const { content } = req.body;
   const comments = commentsByPostId[req.params.id] || [];
   comments.push({ id: commentId, content });
+  commentsByPostId[req.params.id] = comments;
   res.status(201).send(comments);
 });
 
