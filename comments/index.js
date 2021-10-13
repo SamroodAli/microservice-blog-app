@@ -8,9 +8,19 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.get("/posts/:id/comments", (req, res) => {});
+const commentsByPostId = {};
 
-app.post("/posts/:id/comments", (req, res) => {});
+app.get("/posts/:id/comments", (req, res) => {
+  res.send(commentsByPostId[req.params.id] || []);
+});
+
+app.post("/posts/:id/comments", (req, res) => {
+  const commentId = randomBytes(4).toString("hex");
+  const { content } = req.body;
+  const comments = commentsByPostId[req.params.id] || [];
+  comments.push({ id: commentId, content });
+  res.status(201).send(comments);
+});
 
 const PORT = 5000;
 app.listen(PORT, () => {
