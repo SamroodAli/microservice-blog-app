@@ -1,9 +1,11 @@
-const App = () =>{
+import PostCreate from "./PostCreate";
+
+const App = () => {
   return (
     <div>
-      <h1>blog app</h1>
+      <PostCreate />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
