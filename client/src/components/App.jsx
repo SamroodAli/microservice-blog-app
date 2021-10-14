@@ -3,7 +3,7 @@ import PostList from "./PostList";
 
 const App = () => {
   return (
-    <div className="container">
+    <div className="container mt-3">
       <h1>Blog App</h1>
       <h2>Create Post</h2>
       <PostCreate />
