@@ -2,11 +2,14 @@ const express = require("express");
 const { randomBytes } = require("crypto");
 const { json, urlencoded } = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 
 const app = express();
+
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(cors());
 
 const posts = {};
 
