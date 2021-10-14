@@ -14,7 +14,22 @@ const PostList = () => {
     fetchPosts();
   }, []);
 
-  return <div>posts</div>;
+  const renderedPosts = Object.values(posts).map((post) => (
+    <div
+      key={post.id}
+      className="card"
+      style={{ width: "30%", marginBottom: "20px" }}
+    >
+      <div className="card-body">
+        <p>{post.title}</p>
+      </div>
+    </div>
+  ));
+  return (
+    <div className="d-flex flex-row flex-wrap justify-content-between">
+      {renderedPosts}
+    </div>
+  );
 };
 
 export default PostList;
