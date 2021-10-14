@@ -7,7 +7,7 @@ const CommentList = ({ postId }) => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `http://localhost:5000/${postId}/comments`
+        `http://localhost:5000/posts/${postId}/comments`
       );
       setComments(data);
     };
@@ -17,7 +17,7 @@ const CommentList = ({ postId }) => {
   const renderedComments = comments.map((comment) => {
     return <li key={comment.id}>{comment.content}</li>;
   });
-  return <div>{renderedComments}</div>;
+  return <div className="mt-3">{renderedComments}</div>;
 };
 
 export default CommentList;
