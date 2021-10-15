@@ -16,18 +16,17 @@ app.get("/posts", (req, res) => {
 
 app.post("/events", (req, res) => {
   const { type, payload } = req.body;
-  console.log("I am type " + type, type === "POST_CREATED");
-  switch (type) {
+  switch (req.body.type) {
     case "POST_CREATED": {
-      console.log("I ran");
       let { id, title } = payload;
       posts[id] = { id, title, comments: [] };
+      break;
     }
     case "COMMENT_CREATED": {
-      console.log(" I ran too : {");
       let { id, postId, content } = payload;
       let post = posts[postId];
       post.comments.push({ id, content });
+      break;
     }
   }
   res.send({ message: type + " processed" });
