@@ -2,14 +2,14 @@ const express = require("express");
 const { json, urlencoded } = require("body-parser");
 const morgan = require("morgan");
 const { randomBytes } = require("crypto");
-const cors = require('cors')
+const cors = require("cors");
 
 const app = express();
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(cors())
+app.use(cors());
 
 const commentsByPostId = {};
 
@@ -26,7 +26,7 @@ app.post("/posts/:id/comments", (req, res) => {
   res.status(201).send(comments);
 });
 
-const PORT = 5000;
+const PORT = 4001;
 app.listen(PORT, () => {
   console.log(`Comments server running on port ${PORT}`);
 });
