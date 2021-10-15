@@ -36,6 +36,11 @@ app.post("/posts", async (req, res) => {
   res.status(201).send(posts[id]);
 });
 
+app.post("/events", (req, res) => {
+  console.log("Recieved Event", req.body.type);
+  res.send({});
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Posts server listening on ${PORT}`);
