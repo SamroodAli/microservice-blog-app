@@ -43,13 +43,19 @@ app.post("/events", async (req, res) => {
   const { type, payload } = req.body;
   switch (type) {
     case "COMMENT_MODERATED": {
-      const { id, postId, status } = payload;
+      const { id, postId, status, content } = payload;
       const comments = commentsByPostId[postId];
       const comment = comments.find((comment) => comment.id === id);
+      console.log(comment.postId, "moderated id", comment);
       comment.status = status;
       await axios.post("http://localhost:4005/events", {
         type: "COMMENT_UPDATED",
-        payload: comment,
+        payload: {
+          id,
+          postId,
+          status,
+          content,
+        },
       });
       break;
     }

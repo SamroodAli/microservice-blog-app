@@ -26,9 +26,17 @@ app.post("/events", (req, res) => {
       break;
     }
     case "COMMENT_CREATED": {
-      let { id, postId, content,status } = payload;
+      let { id, postId, content, status } = payload;
       let post = posts[postId];
-      post.comments.push({ id, content,status });
+      post.comments.push({ id, content, status });
+      break;
+    }
+    case "COMMENT_UPDATED": {
+      let { id, postId, content, status } = payload;
+      const post = posts[postId];
+      const comment = post.comments.find((comment) => comment.id === id);
+      comment.content = content;
+      comment.status = status;
       break;
     }
   }

@@ -22,10 +22,10 @@ app.post("/events", async (req, res) => {
           status: newStatus,
         },
       });
-      res.send({ message: "Comment moderated" });
       break;
     }
   }
+  res.send({ message: "Comment moderated" });
 });
 
 app.listen(PORT, () => {
