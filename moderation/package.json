@@ -1,0 +1,28 @@
+{
+  "name": "moderation-service",
+  "version": "1.0.0",
+  "description": "Moderation service for blogs",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamroodAli/microservice-blog-app.git"
+  },
+  "keywords": [
+    "microservice"
+  ],
+  "author": "Samrood Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamroodAli/microservice-blog-app/issues"
+  },
+  "homepage": "https://github.com/SamroodAli/microservice-blog-app#readme",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13"
+  }
+}
