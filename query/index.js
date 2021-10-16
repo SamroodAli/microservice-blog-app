@@ -26,9 +26,9 @@ app.post("/events", (req, res) => {
       break;
     }
     case "COMMENT_CREATED": {
-      let { id, postId, content } = payload;
+      let { id, postId, content,status } = payload;
       let post = posts[postId];
-      post.comments.push({ id, content });
+      post.comments.push({ id, content,status });
       break;
     }
   }
