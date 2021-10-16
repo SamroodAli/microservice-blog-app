@@ -8,6 +8,9 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+
+app.post("/events",(req,res)=>{})
+
 app.listen(PORT, () => {
   console.log(`Moderation service running on port ${PORT}`);
 });
