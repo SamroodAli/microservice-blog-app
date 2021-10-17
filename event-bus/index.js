@@ -22,7 +22,7 @@ app.post("/events", (req, res) => {
 });
 
 app.get("/events", (req, res) => {
-  res.status(200).send(posts);
+  res.status(200).send(events);
 });
 
 app.listen(PORT, () => {
