@@ -17,9 +17,8 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/events", (req, res) => {
-  const { type, payload } = req.body;
-  switch (req.body.type) {
+const handleEvent = ({ type, payload }) => {
+  switch (type) {
     case "POST_CREATED": {
       let { id, title } = payload;
       posts[id] = { id, title, comments: [] };
@@ -40,6 +39,11 @@ app.post("/events", (req, res) => {
       break;
     }
   }
+};
+
+app.post("/events", (req, res) => {
+  const event = req.body;
+  handleEvent(event);
   res.send({ message: type + " processed" });
 });
 
