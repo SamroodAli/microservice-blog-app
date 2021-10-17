@@ -2,6 +2,7 @@ const express = require("express");
 const { json, urlencoded } = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const axios = require("axios");
 
 const PORT = 4002;
 const app = express();
