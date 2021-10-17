@@ -18,7 +18,11 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:4001/events", event);
   axios.post("http://localhost:4002/events", event);
   axios.post("http://localhost:4003/events", event);
-  res.send({ message: "Event recieved in event Bus" });
+  res.status(200).send({ message: "Event recieved in event Bus" });
+});
+
+app.get("/events", (req, res) => {
+  res.status(200).send(posts);
 });
 
 app.listen(PORT, () => {
