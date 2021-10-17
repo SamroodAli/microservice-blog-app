@@ -47,6 +47,10 @@ app.post("/events", (req, res) => {
   res.send({ message: type + " processed" });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Query server listening on port ${PORT}`);
+  const { data } = await axios.get("http://localhost:4005/events");
+  for (let event of data) {
+    handleEvent(event);
+  }
 });
