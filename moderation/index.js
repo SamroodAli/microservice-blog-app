@@ -15,7 +15,7 @@ app.post("/events", async (req, res) => {
     case "COMMENT_CREATED": {
       const { content } = payload;
       const newStatus = content.includes("orange") ? "rejected" : "approved";
-      await axios.post("http://localhost:4005/events", {
+      await axios.post("http://event-bus-clusterip-srv:4005/events", {
         type: "COMMENT_MODERATED",
         payload: {
           ...payload,
