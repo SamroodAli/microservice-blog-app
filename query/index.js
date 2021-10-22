@@ -50,7 +50,7 @@ app.post("/events", (req, res) => {
 
 app.listen(PORT, async () => {
   console.log(`Query server listening on port ${PORT}`);
-  const { data } = await axios.get("http://localhost:4005/events");
+  const { data } = await axios.get("http://event-bus-clusterip:4005/events");
   for (let event of data) {
     handleEvent(event);
   }
