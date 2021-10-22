@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: event-bus-cluserip-srv
+    name: event-bus-clusterip-srv
 spec:
   type: ClusterIP
   selector:

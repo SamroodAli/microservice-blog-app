@@ -26,7 +26,7 @@ app.post("/posts", async (req, res) => {
     id,
     title,
   };
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://event-bus-clusterip-srv:4000/events", {
     type: "POST_CREATED",
     payload: {
       id,
@@ -43,6 +43,6 @@ app.post("/events", (req, res) => {
 
 const PORT = 4000;
 app.listen(PORT, () => {
-  console.log("version 2")
+  console.log("version 2");
   console.log(`Posts server listening on ${PORT}`);
 });
