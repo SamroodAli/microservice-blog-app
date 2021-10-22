@@ -26,7 +26,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   comments.push({ id: commentId, content, status: "pending" });
   commentsByPostId[postId] = comments;
 
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http:event-bus-clusterip-srv:4005/events", {
     type: "COMMENT_CREATED",
     payload: {
       id: commentId,
@@ -48,7 +48,7 @@ app.post("/events", async (req, res) => {
       const comment = comments.find((comment) => comment.id === id);
       console.log(comment.postId, "moderated id", comment);
       comment.status = status;
-      await axios.post("http://localhost:4005/events", {
+      await axios.post("http://event-bus-clusterip-srv:4005/events", {
         type: "COMMENT_UPDATED",
         payload: {
           id,
