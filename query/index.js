@@ -25,6 +25,7 @@ const handleEvent = ({ type, payload }) => {
       posts[id] = { id, title, comments: [] };
       break;
     }
+
     case "COMMENT_CREATED": {
       let { id, postId, content, status } = payload;
       let post = posts[postId];
@@ -45,7 +46,7 @@ const handleEvent = ({ type, payload }) => {
 app.post("/events", (req, res) => {
   const event = req.body;
   handleEvent(event);
-  res.send({ message: type + " processed" });
+  res.send({ message: event.type + " processed" });
 });
 
 app.listen(PORT, async () => {

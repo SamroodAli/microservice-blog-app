@@ -26,6 +26,7 @@ app.post("/posts/create", async (req, res) => {
     id,
     title,
   };
+
   await axios.post("http://event-bus-clusterip-srv:4005/events", {
     type: "POST_CREATED",
     payload: {

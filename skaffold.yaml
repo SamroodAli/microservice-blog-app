@@ -16,7 +16,6 @@ build:
         manual:
           - src: "src/**/*.js"
             dest: .
-  artifacts:
     - image: devsamrood/posts
       context: posts
       docker:
@@ -25,7 +24,6 @@ build:
         manual:
           - src: "*.js"
             dest: .
-  artifacts:
     - image: devsamrood/moderation
       context: moderation
       docker:
@@ -34,7 +32,6 @@ build:
         manual:
           - src: "*.js"
             dest: .
-  artifacts:
     - image: devsamrood/query
       context: query
       docker:
@@ -43,7 +40,6 @@ build:
         manual:
           - src: "*.js"
             dest: .
-  artifacts:
     - image: devsamrood/comments
       context: comments
       docker:
@@ -52,7 +48,6 @@ build:
         manual:
           - src: "*.js"
             dest: .
-  artifacts:
     - image: devsamrood/event-bus
       context: event-bus
       docker:

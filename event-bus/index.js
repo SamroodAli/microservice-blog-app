@@ -13,21 +13,25 @@ const events = [];
 
 app.post("/events", (req, res) => {
   const event = req.body;
-  console.log(event.type, event.payload);
   events.push(event);
-  axios
-    .post("http://posts-clusterip-srv:4000/events", event)
-    .catch(console.error);
-  axios
-    .post("http://comments-clusterip-srv:4001/events", event)
-    .catch(console.error);
-  axios
-    .post("http://query-clusterip-srv:4002/events", event)
-    .catch(console.error);
-  axios
-    .post("http://moderation-clusterip-srv:4003/events", event)
-    .catch(console.error);
-  res.status(200).send({ message: `Event ${event.type} in event Bus` });
+  console.log(event);
+  try {
+    axios
+      .post("http://posts-clusterip-srv:4000/events", event)
+      .catch((error) => console.error(error.message));
+    axios
+      .post("http://comments-clusterip-srv:4001/events", event)
+      .catch((error) => console.error(error.message));
+    axios
+      .post("http://query-clusterip-srv:4002/events", event)
+      .catch((error) => console.error(error.message));
+    axios
+      .post("http://moderation-clusterip-srv:4003/events", event)
+      .catch((error) => console.error(error.message));
+  } catch (e) {
+    console.error(e.message);
+  }
+  res.status(200).send({ message: `Event in event Bus` });
 });
 
 app.get("/events", (req, res) => {
@@ -35,5 +39,5 @@ app.get("/events", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Event Bus listening on ${PORT}`);
+  console.log(`Event Bus server listening on ${PORT}`);
 });
