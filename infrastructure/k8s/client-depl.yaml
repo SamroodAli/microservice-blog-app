@@ -9,7 +9,7 @@ spec:
       app: client
   template:
     metadata:
-      label:
+      labels:
         app: client
     spec:
       containers:
