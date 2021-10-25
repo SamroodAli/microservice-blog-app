@@ -25,16 +25,19 @@ app.post("/posts/:id/comments", async (req, res) => {
   const comments = commentsByPostId[postId] || [];
   comments.push({ id: commentId, content, status: "pending" });
   commentsByPostId[postId] = comments;
-
-  await axios.post("http:event-bus-clusterip-srv:4005/events", {
-    type: "COMMENT_CREATED",
-    payload: {
-      id: commentId,
-      postId,
-      content,
-      status: "pending",
-    },
-  });
+  try {
+    await axios.post("http:event-bus-clusterip-srv:4005/events", {
+      type: "COMMENT_CREATED",
+      payload: {
+        id: commentId,
+        postId,
+        content,
+        status: "pending",
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
   res.status(201).send(comments);
 });
 
