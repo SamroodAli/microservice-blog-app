@@ -36,3 +36,7 @@ app.get("/events", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Event Bus listening on ${PORT}`);
 });
+
+const app = () => {
+  return "something";
+};
